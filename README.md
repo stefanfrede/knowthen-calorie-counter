@@ -1,8 +1,11 @@
+[![Build Status](https://travis-ci.org/stefanfrede/knowthen-calorie-counter.svg?branch=master)](https://travis-ci.org/stefanfrede/knowthen-calorie-counter)
+
 # Calorie Counter Application
 
 Functional Programming playground based on the
 [KnowThen](https://courses.knowthen.com) course [Functional Programming For
-Beginners with JavaScript](https://courses.knowthen.com/p/functional-programming-for-beginners-with-javascript) counter application.
+Beginners with JavaScript](https://courses.knowthen.com/p/functional-programming-for-beginners-with-javascript)
+calorie counter application.
 
 ## Install Dependencies
 

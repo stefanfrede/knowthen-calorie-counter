@@ -1,0 +1,146 @@
+{
+  "html-webpack-plugin for \"index.html\"": [
+    {
+      "modules": {
+        "byIdentifier": {
+          "node_modules/html-webpack-plugin/lib/loader.js!node_modules/html-webpack-template/index.ejs": 0,
+          "node_modules/lodash/lodash.js": 1,
+          "node_modules/webpack/buildin/global.js": 2,
+          "node_modules/webpack/buildin/module.js": 3
+        },
+        "usedIds": {
+          "0": 0,
+          "1": 1,
+          "2": 2,
+          "3": 3
+        }
+      },
+      "chunks": {
+        "byName": {},
+        "bySource": {},
+        "usedIds": [
+          0
+        ]
+      }
+    }
+  ],
+  "modules": {
+    "byIdentifier": {
+      "node_modules/core-js/library/modules/_core.js": 0,
+      "node_modules/core-js/library/modules/_is-object.js": 1,
+      "node_modules/core-js/library/modules/_descriptors.js": 2,
+      "node_modules/core-js/library/modules/_fails.js": 3,
+      "node_modules/lit-html/lit-html.js 23faf2016e7b50eabf3be1723d50cd77": 4,
+      "node_modules/ramda/src/internal/_isPlaceholder.js": 5,
+      "node_modules/core-js/library/modules/_global.js": 6,
+      "node_modules/core-js/library/modules/_object-dp.js": 7,
+      "node_modules/core-js/library/modules/_has.js": 8,
+      "node_modules/flyd/lib/index.js": 9,
+      "node_modules/ramda/src/internal/_arity.js": 10,
+      "node_modules/ramda/src/internal/_curry1.js": 11,
+      "node_modules/core-js/library/modules/_export.js": 12,
+      "node_modules/core-js/library/modules/_an-object.js": 13,
+      "node_modules/core-js/library/modules/_to-iobject.js": 14,
+      "node_modules/core-js/library/modules/_to-integer.js": 15,
+      "node_modules/core-js/library/modules/_uid.js": 16,
+      "node_modules/@babel/runtime-corejs2/helpers/taggedTemplateLiteral.js": 17,
+      "node_modules/ramda/src/curryN.js": 18,
+      "node_modules/ramda/src/internal/_curry2.js": 19,
+      "node_modules/ramda/src/internal/_curryN.js": 20,
+      "node_modules/@babel/runtime-corejs2/core-js/object/define-properties.js": 21,
+      "node_modules/core-js/library/fn/object/define-properties.js": 22,
+      "node_modules/core-js/library/modules/es6.object.define-properties.js": 23,
+      "node_modules/core-js/library/modules/_ctx.js": 24,
+      "node_modules/core-js/library/modules/_a-function.js": 25,
+      "node_modules/core-js/library/modules/_hide.js": 26,
+      "node_modules/core-js/library/modules/_ie8-dom-define.js": 27,
+      "node_modules/core-js/library/modules/_dom-create.js": 28,
+      "node_modules/core-js/library/modules/_to-primitive.js": 29,
+      "node_modules/core-js/library/modules/_property-desc.js": 30,
+      "node_modules/core-js/library/modules/_object-dps.js": 31,
+      "node_modules/core-js/library/modules/_object-keys.js": 32,
+      "node_modules/core-js/library/modules/_object-keys-internal.js": 33,
+      "node_modules/core-js/library/modules/_iobject.js": 34,
+      "node_modules/core-js/library/modules/_cof.js": 35,
+      "node_modules/core-js/library/modules/_defined.js": 36,
+      "node_modules/core-js/library/modules/_array-includes.js": 37,
+      "node_modules/core-js/library/modules/_to-length.js": 38,
+      "node_modules/core-js/library/modules/_to-absolute-index.js": 39,
+      "node_modules/core-js/library/modules/_shared-key.js": 40,
+      "node_modules/core-js/library/modules/_shared.js": 41,
+      "node_modules/core-js/library/modules/_library.js": 42,
+      "node_modules/core-js/library/modules/_enum-bug-keys.js": 43,
+      "node_modules/@babel/runtime-corejs2/core-js/object/freeze.js": 44,
+      "node_modules/core-js/library/fn/object/freeze.js": 45,
+      "node_modules/core-js/library/modules/es6.object.freeze.js": 46,
+      "node_modules/core-js/library/modules/_meta.js": 47,
+      "node_modules/core-js/library/modules/_object-sap.js": 48,
+      "node_modules/babel-loader/lib/index.js!src/index.js 39755a86d5eba04b0a72cbb82e7e6521": 49
+    },
+    "usedIds": {
+      "0": 0,
+      "1": 1,
+      "2": 2,
+      "3": 3,
+      "4": 4,
+      "5": 5,
+      "6": 6,
+      "7": 7,
+      "8": 8,
+      "9": 9,
+      "10": 10,
+      "11": 11,
+      "12": 12,
+      "13": 13,
+      "14": 14,
+      "15": 15,
+      "16": 16,
+      "17": 17,
+      "18": 18,
+      "19": 19,
+      "20": 20,
+      "21": 21,
+      "22": 22,
+      "23": 23,
+      "24": 24,
+      "25": 25,
+      "26": 26,
+      "27": 27,
+      "28": 28,
+      "29": 29,
+      "30": 30,
+      "31": 31,
+      "32": 32,
+      "33": 33,
+      "34": 34,
+      "35": 35,
+      "36": 36,
+      "37": 37,
+      "38": 38,
+      "39": 39,
+      "40": 40,
+      "41": 41,
+      "42": 42,
+      "43": 43,
+      "44": 44,
+      "45": 45,
+      "46": 46,
+      "47": 47,
+      "48": 48,
+      "49": 49
+    }
+  },
+  "chunks": {
+    "byName": {
+      "main": 0,
+      "manifest": 1,
+      "vendors~main": 2
+    },
+    "bySource": {},
+    "usedIds": [
+      0,
+      1,
+      2
+    ]
+  }
+}
