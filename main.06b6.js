@@ -1,3 +1,3 @@
-/*! c884a5e */
+/*! c89ee0f */
 (window.webpackJsonp=window.webpackJsonp||[]).push([[0],{49:function(n,e,t){"use strict";t.r(e);var r=t(9),o=t.n(r),i=t(4),a=t(17),c=t.n(a);function u(){var n=c()(['\n  <div class="calorie-counter">\n    Calorie Counter\n  </div>\n']);return u=function(){return n},n}var s=o.a.stream(),d={model:function(){return{description:"Breakfast",calories:480,showForm:!1,nextId:0,editId:null,meals:[]}},view:function(n){return Object(i.a)(u())}},l=o.a.scan(function(n,e){return e(n)},d.model(),s),p=document.getElementById("app");l.map(function(n){return Object(i.b)(d.view(n),p)})}},[[49,1,2]]]);
 //# sourceMappingURL=main.06b6.js.map
