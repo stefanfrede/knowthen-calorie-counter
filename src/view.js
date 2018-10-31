@@ -1,8 +1,10 @@
 import { html } from 'lit-html';
 
 // eslint-disable-next-line no-unused-vars
-export const createView = actions => model => html`
+const createView = actions => model => html`
   <div class="calorie-counter">
-    Calorie Counter
+    <pre>${JSON.stringify(model, null, 2)}</pre>
   </div>
 `;
+
+export default createView;

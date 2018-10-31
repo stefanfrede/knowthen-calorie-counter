@@ -1,11 +1,11 @@
 import flyd from 'flyd';
 import { render } from 'lit-html';
 
-import { createCalorieCounter } from './calorie-counter';
+import app from './app';
 
 const update = flyd.stream();
-const counter = createCalorieCounter(update);
+const counter = app(update);
 const models = flyd.scan((model, func) => func(model), counter.model(), update);
 
-const rootNode = document.getElementById('app');
-models.map(model => render(counter.view(model), rootNode));
+const node = document.getElementById('app');
+models.map(model => render(counter.view(model), node));

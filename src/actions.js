@@ -1,2 +1,4 @@
 // eslint-disable-next-line no-unused-vars
-export const createActions = update => ({});
+const createActions = update => ({});
+
+export default createActions;
