@@ -30,7 +30,7 @@ const commonConfig = merge([
       }),
     ],
   },
-  parts.loadFonts(),
+  parts.loadSCSS(),
   parts.loadSVGs({
     options: {
       classPrefix: true,
@@ -52,7 +52,7 @@ const productionConfig = merge([
     },
     performance: {
       hints: 'warning',
-      maxEntrypointSize: 50000,
+      maxEntrypointSize: 150000,
       maxAssetSize: 450000,
     },
   },
@@ -70,10 +70,11 @@ const productionConfig = merge([
       discardComments: {
         removeAll: true,
       },
+      safe: true,
     },
   }),
   parts.extractCSS({
-    use: ['css-loader', parts.cssnext()],
+    use: ['css-loader', 'sass-loader'],
   }),
   parts.purifyCSS({
     paths: glob.sync(`${PATHS.app}/**/*.js`, { nodir: true }),
@@ -108,7 +109,6 @@ const developmentConfig = merge([
     host: process.env.HOST,
     port: process.env.PORT,
   }),
-  parts.loadCSS(),
   parts.loadImages(),
 ]);
 

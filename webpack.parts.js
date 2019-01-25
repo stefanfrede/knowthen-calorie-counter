@@ -51,7 +51,7 @@ exports.extractCSS = ({ include, exclude, use = [] }) => {
     module: {
       rules: [
         {
-          test: /\.css$/,
+          test: /\.(sa|sc|c)ss$/,
           include,
           exclude,
 
@@ -135,6 +135,20 @@ exports.loadJavaScript = ({ include, exclude } = {}) => ({
         use: {
           loader: 'babel-loader',
         },
+      },
+    ],
+  },
+});
+
+exports.loadSCSS = ({ include, exclude } = {}) => ({
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        include,
+        exclude,
+
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
     ],
   },
