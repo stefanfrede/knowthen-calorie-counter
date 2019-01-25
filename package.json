@@ -56,9 +56,7 @@
     "deploy": "gh-pages -d dist",
     "lint": "npm run lint:javascript && npm run lint:css",
     "lint:javascript": "eslint src/.",
-    "lint:css": "stylelint src/**/*.css",
-    "test:watch": "webpack-dev-server --hot --config webpack.mocha.js",
-    "test": "NODE_ENV=test mocha --require @babel/register tests/**/*.test.js"
+    "lint:css": "stylelint src/**/*.css"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",

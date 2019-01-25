@@ -2,8 +2,7 @@
   "env": {
     "browser": true,
     "node": true,
-    "es6": true,
-    "mocha": true
+    "es6": true
   },
   "parser": "babel-eslint",
   "extends": [
@@ -19,13 +18,5 @@
     "ecmaFeatures": {
       "impliedStrict": true
     }
-  },
-  "rules": {
-    "no-unused-vars": [
-      "error",
-      {
-        "varsIgnorePattern": "should|expect|assert"
-      }
-    ]
   }
 }
