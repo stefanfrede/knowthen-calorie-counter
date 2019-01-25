@@ -1,23 +1,28 @@
 language: node_js
+node_js:
+  - 10
 sudo: required
 dist: trusty
 node_js:
-- node
+  - node
 cache:
+  npm: true
   directories:
-  - node_modules
+    - ~/.npm
+    - ~/.cache
 git:
   depth: 1
 before_install:
-- printf "@fortawesome:registry=https://npm.fontawesome.com/\n//npm.fontawesome.com/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
-- npm i -g npm@latest
+  - printf "@fortawesome:registry=https://npm.fontawesome.com/\n//npm.fontawesome.com/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
+  - npm i -g npm@latest
 install:
-- npm i
+  - npm ci
 before_script:
-- npm run lint
-- npm test
+  - npm run lint
+  - npm start -- --silent &
 script:
-- npm run build
+  - npm run cypress:run
+  - npm run build
 deploy:
   provider: pages
   local-dir: dist
@@ -28,5 +33,5 @@ deploy:
     branch: master
 env:
   global:
-  - secure: RqszbT3ic4xFCFc5+LLZYXP338aGzHqGQf+xpcyEivXWUoUd6EKghxDzlNUIQcH09i0BohkLx7fudz6iZvSSfMOfHmRWjq4VNMHS2szuXHtuMw+RVn1Kxr4iXCoto4tRuHEqqnCd2vpJtfuN+q2GKZuTM4vMOtXDGrDEb9oUxIWxPmKcC73qnipcX5ntjElg5k2Z6YO/RJ/mLgLsZ1KTR3xpIhzv8Y7tWQxMp/wWxMExPvKgXRFXCet5g13hBWCPnoSO/h/ZonHk/rvw+xqe5utF6ntT9F0LxJ3+vwnnw5uZxJXhWOOdqmNm2waTBYRcsHNQbrZRdEngjz+tyqxXEuAjhigXcWxOfiAcEJiXCNHKbTbPSy1i6hdlhfIJOaCppgrvlPaq5nAEwm2IbpIzYhW3HOJf4Ufq9kMkqN9Xo1N5xfrl3W3brRwTUetXb5KXYxDgttX9hOoMP7NDRj3Yrzlm01b41sSn87FecFTGKa3GtwiI75P6C2Q0dnjmDgwRub3x7dpO2fj3O5P5Zw6l+6K/RNhl1ZAyyixbD8KOaxSj4YIK71/4hwRXInACwIuQuQ4L9SK7HQdSDw6Ox3+Qbc6rdK9sMvcFoTWGPkwHlpvren7rYPylsbmO3rzsmCROHneNpliMcIsycJK8BqmccqJVQvv8IdgSykYv8SjnLas=
-  - secure: b9FjCKTJxSL0in3RVP9kVJR+fx+5UUsuZy3w+V4xTEL1jRwqod/6K3MDabxITzjLLqCCk/TossJgvTURBf/nYxgnJs4ykhilAHwADO5np+2mw1bJLirQZ5G6FtVIaVqx7Ks6y9GrOcOy1FRZohN9qI03Zk2Y4UBId4vTAcUiG9A/K15OIudIuTlZFemyH44Pjxq/qTy/Z6RGMgUzk0gXceHx/YI6EZ34kjHaaLBcrv7uD8shJdz5O7we+ET9XqKrF+wdl1bxejaJyFtdO5Jzhp60ZcgVGR3KSJDOn2WStwFDCsO/MMsPy0V67CdpiqzyPdWpwyHPamXYHL6jA/gr7L5Yzq6g75Cw+xxBNCM87Nqtv9ML0kr9c84dn2PLjne/IAY6Hq9to+L6gdAf/PjLYGpSoA50mpdRtAVnigU529h8AvJdJLHBlQph5GyP5EhXzS09FC34MQ+ZODbQaS+CUioNqjf1fIgpU8lGLeoIUVDCS5dtxmF3aC3sPkYCKRbk3+L2WnATzRcyXiqN3uU3gAGyfgxUDM+wFpl/1VJGuhZ1MMK+oSnUC3F4lwFqi7zgqireXlscE5btN/WapNvN2WYzyr0j7TjQ8WDX58VTncyItsHdi64JNBERLcQhmQPsg0IawK6XCKrsmv30LcXyH3HYENaIAhEYwDedNO4z+5g=
+    - secure: RqszbT3ic4xFCFc5+LLZYXP338aGzHqGQf+xpcyEivXWUoUd6EKghxDzlNUIQcH09i0BohkLx7fudz6iZvSSfMOfHmRWjq4VNMHS2szuXHtuMw+RVn1Kxr4iXCoto4tRuHEqqnCd2vpJtfuN+q2GKZuTM4vMOtXDGrDEb9oUxIWxPmKcC73qnipcX5ntjElg5k2Z6YO/RJ/mLgLsZ1KTR3xpIhzv8Y7tWQxMp/wWxMExPvKgXRFXCet5g13hBWCPnoSO/h/ZonHk/rvw+xqe5utF6ntT9F0LxJ3+vwnnw5uZxJXhWOOdqmNm2waTBYRcsHNQbrZRdEngjz+tyqxXEuAjhigXcWxOfiAcEJiXCNHKbTbPSy1i6hdlhfIJOaCppgrvlPaq5nAEwm2IbpIzYhW3HOJf4Ufq9kMkqN9Xo1N5xfrl3W3brRwTUetXb5KXYxDgttX9hOoMP7NDRj3Yrzlm01b41sSn87FecFTGKa3GtwiI75P6C2Q0dnjmDgwRub3x7dpO2fj3O5P5Zw6l+6K/RNhl1ZAyyixbD8KOaxSj4YIK71/4hwRXInACwIuQuQ4L9SK7HQdSDw6Ox3+Qbc6rdK9sMvcFoTWGPkwHlpvren7rYPylsbmO3rzsmCROHneNpliMcIsycJK8BqmccqJVQvv8IdgSykYv8SjnLas=
+    - secure: b9FjCKTJxSL0in3RVP9kVJR+fx+5UUsuZy3w+V4xTEL1jRwqod/6K3MDabxITzjLLqCCk/TossJgvTURBf/nYxgnJs4ykhilAHwADO5np+2mw1bJLirQZ5G6FtVIaVqx7Ks6y9GrOcOy1FRZohN9qI03Zk2Y4UBId4vTAcUiG9A/K15OIudIuTlZFemyH44Pjxq/qTy/Z6RGMgUzk0gXceHx/YI6EZ34kjHaaLBcrv7uD8shJdz5O7we+ET9XqKrF+wdl1bxejaJyFtdO5Jzhp60ZcgVGR3KSJDOn2WStwFDCsO/MMsPy0V67CdpiqzyPdWpwyHPamXYHL6jA/gr7L5Yzq6g75Cw+xxBNCM87Nqtv9ML0kr9c84dn2PLjne/IAY6Hq9to+L6gdAf/PjLYGpSoA50mpdRtAVnigU529h8AvJdJLHBlQph5GyP5EhXzS09FC34MQ+ZODbQaS+CUioNqjf1fIgpU8lGLeoIUVDCS5dtxmF3aC3sPkYCKRbk3+L2WnATzRcyXiqN3uU3gAGyfgxUDM+wFpl/1VJGuhZ1MMK+oSnUC3F4lwFqi7zgqireXlscE5btN/WapNvN2WYzyr0j7TjQ8WDX58VTncyItsHdi64JNBERLcQhmQPsg0IawK6XCKrsmv30LcXyH3HYENaIAhEYwDedNO4z+5g=
