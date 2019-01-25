@@ -56,7 +56,8 @@
     "deploy": "gh-pages -d dist",
     "lint": "npm run lint:javascript && npm run lint:css",
     "lint:javascript": "eslint src/.",
-    "lint:css": "stylelint src/**/*.css"
+    "lint:css": "stylelint src/**/*.css",
+    "cypress": "cypress open"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
@@ -73,8 +74,11 @@
     "copy-webpack-plugin": "^4.6.0",
     "css-loader": "^2.1.0",
     "cssnano": "^4.1.8",
+    "cypress": "^3.1.4",
     "eslint": "^5.12.1",
     "eslint-config-prettier": "^3.6.0",
+    "eslint-plugin-chai-friendly": "^0.4.1",
+    "eslint-plugin-cypress": "^2.2.0",
     "eslint-plugin-import": "^2.15.0",
     "eslint-plugin-prettier": "^3.0.1",
     "friendly-errors-webpack-plugin": "^1.7.0",
