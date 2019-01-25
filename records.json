@@ -19,7 +19,7 @@
         "byName": {},
         "bySource": {},
         "usedIds": [
-          0
+          1
         ]
       }
     }
@@ -75,7 +75,21 @@
       "node_modules/core-js/library/modules/es6.object.freeze.js": 46,
       "node_modules/core-js/library/modules/_meta.js": 47,
       "node_modules/core-js/library/modules/_object-sap.js": 48,
-      "node_modules/babel-loader/lib/index.js!src/index.js 39755a86d5eba04b0a72cbb82e7e6521": 49
+      "node_modules/babel-loader/lib/index.js!src/index.js 39755a86d5eba04b0a72cbb82e7e6521": 49,
+      "node_modules/@fortawesome/pro-regular-svg-icons/index.es.js": 49,
+      "node_modules/@fortawesome/fontawesome-svg-core/index.es.js": 50,
+      "node_modules/@babel/runtime-corejs2/core-js/json/stringify.js": 51,
+      "node_modules/core-js/library/fn/json/stringify.js": 52,
+      "node_modules/style-loader/index.js!node_modules/css-loader/dist/cjs.js??ref--4-1!node_modules/sass-loader/lib/loader.js!src/assets/styles/index.scss": 53,
+      "node_modules/css-loader/dist/cjs.js??ref--4-1!node_modules/sass-loader/lib/loader.js!src/assets/styles/index.scss": 54,
+      "node_modules/css-loader/dist/runtime/api.js": 55,
+      "node_modules/style-loader/lib/addStyles.js": 56,
+      "node_modules/style-loader/lib/urls.js": 57,
+      "node_modules/babel-loader/lib/index.js!src/index.js 6b662438bbd0ffd378bd8a96d2f0cae2": 58,
+      "node_modules/style-loader/index.js!node_modules/css-loader/dist/cjs.js??ref--4-1!node_modules/sass-loader/lib/loader.js!node_modules/mini-css-extract-plugin/dist/loader.js!node_modules/css-loader/dist/cjs.js!node_modules/sass-loader/lib/loader.js!src/assets/styles/index.scss": 53,
+      "node_modules/css-loader/dist/cjs.js??ref--4-1!node_modules/sass-loader/lib/loader.js!node_modules/mini-css-extract-plugin/dist/loader.js!node_modules/css-loader/dist/cjs.js!node_modules/sass-loader/lib/loader.js!src/assets/styles/index.scss": 54,
+      "node_modules/style-loader/index.js!node_modules/css-loader/dist/cjs.js!node_modules/sass-loader/lib/loader.js!node_modules/mini-css-extract-plugin/dist/loader.js!node_modules/css-loader/dist/cjs.js!node_modules/sass-loader/lib/loader.js!src/assets/styles/index.scss": 53,
+      "node_modules/css-loader/dist/cjs.js!node_modules/sass-loader/lib/loader.js!node_modules/mini-css-extract-plugin/dist/loader.js!node_modules/css-loader/dist/cjs.js!node_modules/sass-loader/lib/loader.js!src/assets/styles/index.scss": 54
     },
     "usedIds": {
       "0": 0,
@@ -127,7 +141,16 @@
       "46": 46,
       "47": 47,
       "48": 48,
-      "49": 49
+      "49": 49,
+      "50": 50,
+      "51": 51,
+      "52": 52,
+      "53": 53,
+      "54": 54,
+      "55": 55,
+      "56": 56,
+      "57": 57,
+      "58": 58
     }
   },
   "chunks": {
@@ -142,5 +165,28 @@
       1,
       2
     ]
-  }
+  },
+  "mini-css-extract-plugin node_modules/css-loader/dist/cjs.js!node_modules/sass-loader/lib/loader.js!src/assets/styles/index.scss": [
+    {
+      "modules": {
+        "byIdentifier": {
+          "node_modules/css-loader/dist/cjs.js!node_modules/sass-loader/lib/loader.js!src/assets/styles/index.scss": 0,
+          "node_modules/css-loader/dist/runtime/api.js": 1
+        },
+        "usedIds": {
+          "0": 0,
+          "1": 1
+        }
+      },
+      "chunks": {
+        "byName": {
+          "mini-css-extract-plugin": 0
+        },
+        "bySource": {},
+        "usedIds": [
+          0
+        ]
+      }
+    }
+  ]
 }

@@ -93,6 +93,7 @@
     "mini-css-extract-plugin": "^0.5.0",
     "mocha": "^5.2.0",
     "mocha-loader": "^2.0.0",
+    "node-sass": "^4.11.0",
     "nodemon": "^1.18.9",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss": "^7.0.14",
@@ -102,6 +103,7 @@
     "prettier": "^1.16.1",
     "purify-css": "^1.2.5",
     "purifycss-webpack": "^0.7.0",
+    "sass-loader": "^7.1.0",
     "sinon": "^7.2.3",
     "sinon-chai": "^3.3.0",
     "style-loader": "^0.23.1",
@@ -121,6 +123,7 @@
     "@babel/runtime-corejs2": "^7.3.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.12",
     "@fortawesome/pro-regular-svg-icons": "^5.6.3",
+    "bulma": "^0.7.2",
     "crocks": "^0.11.1",
     "flyd": "^0.2.8"
   }
