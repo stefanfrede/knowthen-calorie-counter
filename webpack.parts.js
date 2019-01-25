@@ -4,8 +4,6 @@ const GitRevisionPlugin = require('git-revision-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const postcssNormalize = require('postcss-normalize');
-const postcssPresetEnv = require('postcss-preset-env');
 const PurifyCSSPlugin = require('purifycss-webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 const webpack = require('webpack');
@@ -20,14 +18,6 @@ exports.attachRevision = () => ({
 
 exports.clean = path => ({
   plugins: [new CleanWebpackPlugin([path])],
-});
-
-exports.cssnext = () => ({
-  loader: 'postcss-loader',
-  options: {
-    ident: 'postcss',
-    plugins: () => [postcssNormalize(), postcssPresetEnv()],
-  },
 });
 
 exports.devServer = ({ host, port } = {}) => ({
@@ -65,48 +55,6 @@ exports.extractCSS = ({ include, exclude, use = [] }) => {
 
 exports.generateSourceMaps = ({ type }) => ({
   devtool: type,
-});
-
-exports.loadCSS = ({ include, exclude } = {}) => ({
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        include,
-        exclude,
-
-        use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          {
-            loader: 'postcss-loader',
-            options: {
-              ident: 'postcss',
-              plugins: () => [postcssNormalize(), postcssPresetEnv()],
-            },
-          },
-        ],
-      },
-    ],
-  },
-});
-
-exports.loadFonts = ({ include, exclude } = {}) => ({
-  module: {
-    rules: [
-      {
-        test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
-        include,
-        exclude,
-        use: {
-          loader: 'file-loader',
-          options: {
-            name: 'fonts/[name].[ext]',
-          },
-        },
-      },
-    ],
-  },
 });
 
 exports.loadImages = ({ include, exclude, options } = {}) => ({
