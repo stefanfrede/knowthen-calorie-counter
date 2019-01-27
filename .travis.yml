@@ -1,10 +1,8 @@
 language: node_js
-node_js:
-  - 10
 sudo: required
 dist: trusty
 node_js:
-  - node
+  - 10
 cache:
   npm: true
   directories:
@@ -14,15 +12,12 @@ git:
   depth: 1
 before_install:
   - printf "@fortawesome:registry=https://npm.fontawesome.com/\n//npm.fontawesome.com/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
-  - npm i -g npm@latest
 install:
   - npm ci
 before_script:
   - npm run lint
-  - npm start -- --silent &
 script:
-  - npm run cypress:run
-  - npm run build
+  - npm run test:e2e
 deploy:
   provider: pages
   local-dir: dist
