@@ -47,9 +47,9 @@ const commonConfig = merge([
 
 const productionConfig = merge([
   {
-    output: {
-      publicPath: '/knowthen-calorie-counter/',
-    },
+    // output: {
+    //   publicPath: '/knowthen-calorie-counter/',
+    // },
     performance: {
       hints: 'warning',
       maxEntrypointSize: 150000,
