@@ -34,45 +34,44 @@
     "Firefox ESR",
     "Opera 12.1"
   ],
-  "lint-staged": {
-    "*.css": [
-      "stylelint --fix",
-      "git add"
-    ],
-    "*.js": [
-      "eslint --fix",
-      "git add"
-    ]
-  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
   },
   "scripts": {
-    "start": "nodemon --watch webpack.config.js --exec \"webpack-dev-server --env development\"",
-    "build": "webpack --env production",
-    "build:stats": "webpack --env production --json > stats.json",
-    "deploy": "gh-pages -d dist",
-    "lint": "npm run lint:javascript && npm run lint:css",
-    "lint:javascript": "eslint src/.",
-    "lint:css": "stylelint src/**/*.css",
-    "cy:open": "cypress open",
+    "test": "if-ci npm run test:coverage && if-not-ci npm run test:watch",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch",
+    "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand --watch",
     "cy:run": "cypress run",
+    "cy:open": "cypress open",
     "test:e2e": "if-ci npm run test:e2e:run && if-not-ci npm run test:e2e:dev",
     "pretest:e2e:run": "npm run build",
     "test:e2e:run": "start-server-and-test start http://localhost:8080 cy:run",
-    "test:e2e:dev": "start-server-and-test start http://localhost:8080 cy:open"
+    "test:e2e:dev": "start-server-and-test dev http://localhost:8080 cy:open",
+    "build": "webpack --env production",
+    "build:stats": "webpack --env production --json > stats.json",
+    "dev": "nodemon --watch webpack.config.js --exec \"webpack-dev-server --env development\"",
+    "start": "serve --no-clipboard --listen 8080 dist",
+    "deploy": "gh-pages -d dist",
+    "lint": "npm run lint:javascript && npm run lint:css",
+    "lint:javascript": "eslint src/**/*.js",
+    "lint:css": "stylelint src/**/*.css",
+    "validate": "npm run lint && npm run test:coverage && npm run test:e2e:run"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.3.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.3.1",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/plugin-transform-runtime": "^7.2.0",
     "@babel/preset-env": "^7.3.1",
     "@babel/register": "^7.0.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
+    "babel-plugin-dynamic-import-node": "^2.2.0",
     "browserslist": "^4.4.1",
     "case-sensitive-paths-webpack-plugin": "^2.2.0",
     "clean-webpack-plugin": "^1.0.1",
@@ -95,6 +94,8 @@
     "html-webpack-template": "^6.2.0",
     "husky": "^1.3.1",
     "if-ci": "^3.0.0",
+    "jest": "^24.0.0",
+    "jest-watch-typeahead": "^0.2.1",
     "lint-staged": "^8.1.0",
     "lit-html": "^1.0.0-rc.2",
     "mini-css-extract-plugin": "^0.5.0",
@@ -105,6 +106,7 @@
     "purify-css": "^1.2.5",
     "purifycss-webpack": "^0.7.0",
     "sass-loader": "^7.1.0",
+    "serve": "^10.1.1",
     "start-server-and-test": "^1.7.11",
     "style-loader": "^0.23.1",
     "stylelint": "^9.10.1",
