@@ -1,7 +1,7 @@
 module.exports = {
   testEnvironment: 'jest-environment-jsdom',
   moduleNameMapper: {
-    '\\.css$': require.resolve('./test/style-mock.js'),
+    '\\.s?css$': require.resolve('./test/style-mock.js'),
   },
   modulePathIgnorePatterns: ['<rootDir>/cypress', '<rootDir>/src/assets'],
   setupFilesAfterEnv: ['<rootDir>/test/setup-tests.js'],
