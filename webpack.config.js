@@ -10,11 +10,13 @@ const parts = require('./webpack.parts');
 
 const PATHS = {
   app: path.join(__dirname, 'src'),
-  build: path.join(__dirname, 'dist'),
 };
 
 const commonConfig = merge([
   {
+    output: {
+      path: path.resolve(process.cwd(), 'dist'),
+    },
     plugins: [
       new CaseSensitivePathsPlugin(),
       new CopyWebpackPlugin(['./favicon.ico']),
@@ -63,7 +65,7 @@ const productionConfig = merge([
       filename: '[name].[chunkhash:4].js',
     },
   },
-  parts.clean(PATHS.build),
+  parts.clean(),
   parts.minifyJavaScript(),
   parts.minifyCSS({
     options: {

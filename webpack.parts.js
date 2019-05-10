@@ -16,8 +16,8 @@ exports.attachRevision = () => ({
   ],
 });
 
-exports.clean = path => ({
-  plugins: [new CleanWebpackPlugin([path])],
+exports.clean = () => ({
+  plugins: [new CleanWebpackPlugin()],
 });
 
 exports.devServer = ({ host, port } = {}) => ({
