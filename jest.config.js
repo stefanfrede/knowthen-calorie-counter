@@ -10,4 +10,5 @@ module.exports = {
     'jest-watch-typeahead/filename',
     'jest-watch-typeahead/testname',
   ],
+  transformIgnorePatterns: ['/node_modules/(?!lit-html).+\\.js'],
 };
