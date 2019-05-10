@@ -11,4 +11,12 @@ module.exports = {
     'jest-watch-typeahead/testname',
   ],
   transformIgnorePatterns: ['/node_modules/(?!lit-html).+\\.js'],
+  coverageThreshold: {
+    global: {
+      statements: 17,
+      branches: 4,
+      lines: 17,
+      functions: 20,
+    },
+  },
 };
