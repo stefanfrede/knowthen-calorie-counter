@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+Object {
+  "calories": 480,
+  "description": "Breakfast",
+  "editId": null,
+  "meals": Array [],
+  "nextId": 0,
+  "showForm": false,
+}
+`;
