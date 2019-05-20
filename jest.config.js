@@ -5,7 +5,11 @@ module.exports = {
   },
   modulePathIgnorePatterns: ['<rootDir>/cypress', '<rootDir>/src/assets'],
   setupFilesAfterEnv: ['<rootDir>/test/setup-tests.js'],
-  collectCoverageFrom: ['**/src/**/*.js'],
+  collectCoverageFrom: [
+    '**/src/**/*.js',
+    '!**/src/index.js',
+    '!**/src/assets/**/*.js',
+  ],
   watchPlugins: [
     'jest-watch-typeahead/filename',
     'jest-watch-typeahead/testname',
