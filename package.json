@@ -58,7 +58,7 @@
     "lint": "npm run lint:javascript && npm run lint:css",
     "lint:javascript": "eslint src/**/*.js",
     "lint:css": "stylelint src/**/*.scss",
-    "validate": "npm run lint && npm run test:coverage && npm run test:e2e:run"
+    "validate": "npm run lint && npm run test:coverage"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
