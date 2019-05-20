@@ -9,7 +9,7 @@ module.exports = api => {
       [
         '@babel/plugin-transform-runtime',
         {
-          corejs: 2,
+          corejs: 3,
         },
       ],
       isTest ? 'babel-plugin-dynamic-import-node' : null,
