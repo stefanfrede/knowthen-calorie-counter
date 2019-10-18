@@ -39,6 +39,14 @@
       "pre-commit": "lint-staged"
     }
   },
+  "lint-staged": {
+    "*.{css,scss}": "eslint",
+    "*.js": "eslint",
+    "*.{js,json,css,scss,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "scripts": {
     "test": "if-ci npm run test:coverage && if-not-ci npm run test:watch",
     "test:coverage": "jest --coverage",
@@ -58,7 +66,7 @@
     "lint": "npm run lint:javascript && npm run lint:css",
     "lint:javascript": "eslint src/**/*.js",
     "lint:css": "stylelint src/**/*.scss",
-    "validate": "npm run lint && npm run test:coverage"
+    "validate": "npm run build && npm run lint && npm run test:coverage"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.4",
