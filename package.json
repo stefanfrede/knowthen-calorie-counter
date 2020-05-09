@@ -98,7 +98,6 @@
     "git-revision-webpack-plugin": "^3.0.6",
     "glob": "^7.1.6",
     "html-webpack-plugin": "^4.3.0",
-    "html-webpack-template": "^6.2.0",
     "husky": "^4.2.5",
     "if-ci": "^3.0.0",
     "jest": "^26.0.1",

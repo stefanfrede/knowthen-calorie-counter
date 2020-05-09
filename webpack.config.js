@@ -22,12 +22,8 @@ const commonConfig = merge([
       new CopyWebpackPlugin(['./favicon.ico']),
       new FriendlyErrorsWebpackPlugin(),
       new HtmlWebpackPlugin({
-        // Required
-        inject: false,
-        template: require('html-webpack-template'),
-        // Optional
-        appMountId: 'app',
         favicon: 'favicon.ico',
+        template: 'src/assets/templates/index.html',
         title: 'knowthen calorie counter application',
       }),
     ],
@@ -114,7 +110,7 @@ const developmentConfig = merge([
   parts.loadImages(),
 ]);
 
-module.exports = mode => {
+module.exports = (mode) => {
   const config = mode === 'production' ? productionConfig : developmentConfig;
 
   return merge([commonConfig, config, { mode }]);

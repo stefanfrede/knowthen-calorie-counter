@@ -380,7 +380,8 @@
     {
       "modules": {
         "byIdentifier": {
-          "node_modules/html-webpack-plugin/lib/loader.js!node_modules/html-webpack-template/index.ejs": 0
+          "node_modules/html-webpack-plugin/lib/loader.js!node_modules/html-webpack-template/index.ejs": 0,
+          "node_modules/html-webpack-plugin/lib/loader.js!src/assets/templates/index.html": 0
         },
         "usedIds": {
           "0": 0

@@ -8,4 +8,4 @@ const counter = app(update);
 const models = flyd.scan((model, func) => func(model), counter.model(), update);
 
 const node = document.getElementById('app');
-models.map(model => render(counter.view(model), node));
+models.map((model) => render(counter.view(model), node));
