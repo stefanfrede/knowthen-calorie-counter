@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders init model correctly 1`] = `
+Object {
+  "calories": 480,
+  "description": "Breakfast",
+  "editId": null,
+  "meals": Array [],
+  "nextId": 0,
+  "showForm": false,
+}
+`;
+
+exports[`updates init model correctly 1`] = `
+Object {
+  "calories": 960,
+  "description": "Lunch",
+  "editId": null,
+  "meals": Array [],
+  "nextId": 0,
+  "showForm": false,
+}
+`;
