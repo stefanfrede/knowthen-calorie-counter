@@ -43,8 +43,7 @@
     "*.{css,scss}": "eslint",
     "*.js": "eslint",
     "*.{js,json,css,scss,md}": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   },
   "scripts": {
