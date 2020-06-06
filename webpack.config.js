@@ -73,8 +73,8 @@ const productionConfig = merge([
   parts.extractCSS({
     use: ['css-loader', 'postcss-loader'],
   }),
-  parts.purifyCSS({
-    paths: glob.sync(`${PATHS.app}/**/*.js`, { nodir: true }),
+  parts.purgeCSS({
+    paths: glob.sync(`${PATHS.app}/**/*`, { nodir: true }),
   }),
   parts.loadImages({
     options: {
