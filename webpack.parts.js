@@ -41,7 +41,7 @@ exports.extractCSS = ({ include, exclude, use = [] }) => {
     module: {
       rules: [
         {
-          test: /\.(sa|sc|c)ss$/,
+          test: /\.css$/,
           include,
           exclude,
 
@@ -55,6 +55,26 @@ exports.extractCSS = ({ include, exclude, use = [] }) => {
 
 exports.generateSourceMaps = ({ type }) => ({
   devtool: type,
+});
+
+exports.loadCSS = ({ include, exclude } = {}) => ({
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        include,
+        exclude,
+
+        use: [
+          'style-loader',
+          { loader: 'css-loader', options: { importLoaders: 1 } },
+          {
+            loader: 'postcss-loader',
+          },
+        ],
+      },
+    ],
+  },
 });
 
 exports.loadImages = ({ include, exclude, options } = {}) => ({
@@ -83,20 +103,6 @@ exports.loadJavaScript = ({ include, exclude } = {}) => ({
         use: {
           loader: 'babel-loader',
         },
-      },
-    ],
-  },
-});
-
-exports.loadSCSS = ({ include, exclude } = {}) => ({
-  module: {
-    rules: [
-      {
-        test: /\.scss$/,
-        include,
-        exclude,
-
-        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
     ],
   },

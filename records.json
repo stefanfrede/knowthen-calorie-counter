@@ -217,7 +217,10 @@
       "node_modules/core-js-pure/internals/engine-user-agent.js": 91,
       "node_modules/core-js-pure/modules/es.json.stringify.js": 92,
       "node_modules/style-loader/dist/cjs.js!node_modules/css-loader/dist/cjs.js!node_modules/sass-loader/dist/cjs.js!node_modules/mini-css-extract-plugin/dist/loader.js!node_modules/css-loader/dist/cjs.js!node_modules/sass-loader/dist/cjs.js!src/assets/styles/index.scss": 93,
-      "node_modules/babel-loader/lib/index.js!src/index.js 3d92e89e2bfa1d077ae4696cceed5ba6": 94
+      "node_modules/babel-loader/lib/index.js!src/index.js 3d92e89e2bfa1d077ae4696cceed5ba6": 94,
+      "node_modules/style-loader/dist/cjs.js!node_modules/css-loader/dist/cjs.js??ref--4-1!node_modules/postcss-loader/src/index.js!src/assets/styles/index.css": 87,
+      "node_modules/css-loader/dist/cjs.js??ref--4-1!node_modules/postcss-loader/src/index.js!src/assets/styles/index.css": 93,
+      "node_modules/mini-css-extract-plugin/dist/loader.js!node_modules/css-loader/dist/cjs.js!node_modules/postcss-loader/src/index.js!src/assets/styles/index.css": 55
     },
     "usedIds": {
       "0": 0,
@@ -390,6 +393,29 @@
       "chunks": {
         "byName": {
           "HtmlWebpackPlugin_0": 0
+        },
+        "bySource": {},
+        "usedIds": [
+          0
+        ]
+      }
+    }
+  ],
+  "mini-css-extract-plugin node_modules/css-loader/dist/cjs.js!node_modules/postcss-loader/src/index.js!src/assets/styles/index.css": [
+    {
+      "modules": {
+        "byIdentifier": {
+          "node_modules/css-loader/dist/cjs.js!node_modules/postcss-loader/src/index.js!src/assets/styles/index.css": 0,
+          "node_modules/css-loader/dist/runtime/api.js": 1
+        },
+        "usedIds": {
+          "0": 0,
+          "1": 1
+        }
+      },
+      "chunks": {
+        "byName": {
+          "mini-css-extract-plugin": 0
         },
         "bySource": {},
         "usedIds": [
