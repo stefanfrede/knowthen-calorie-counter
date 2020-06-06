@@ -24,10 +24,10 @@ jobs:
           registry-url: https://npm.fontawesome.com/
           scope: '@fortawesome'
 
-      - name: Install and Build 🔧
+      - name: Install and Validate 🔧
         run: |
           npm install
-          npm run build
+          npm run validate
         env:
           NODE_AUTH_TOKEN: ${{secrets.FONTAWESOME_NPM_AUTH_TOKEN}}
 
