@@ -64,7 +64,7 @@
     "deploy": "gh-pages -d dist",
     "lint": "npm run lint:javascript && npm run lint:css",
     "lint:javascript": "eslint src/**/*.js",
-    "lint:css": "stylelint src/**/*.scss",
+    "lint:css": "stylelint src/**/*.css",
     "validate": "npm run build && npm run lint && npm run test:coverage"
   },
   "devDependencies": {
