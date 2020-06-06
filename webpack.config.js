@@ -19,7 +19,7 @@ const commonConfig = merge([
     },
     plugins: [
       new CaseSensitivePathsPlugin(),
-      new CopyWebpackPlugin(['./favicon.ico']),
+      new CopyWebpackPlugin({ patterns: ['./favicon.ico'] }),
       new FriendlyErrorsWebpackPlugin(),
       new HtmlWebpackPlugin({
         favicon: 'favicon.ico',
