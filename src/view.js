@@ -1,12 +1,12 @@
 import { html } from 'lit-html';
 
-import './assets/styles/index.scss';
+import './assets/styles/index.css';
 import icons from './assets/icons';
 
 const { utensils: iconUtensils } = icons;
 
 // eslint-disable-next-line no-unused-vars
-const createView = actions => model => html`
+const createView = (actions) => (model) => html`
   <section class="hero is-light is-fullheight">
     <div class="hero-body">
       <div class="container">

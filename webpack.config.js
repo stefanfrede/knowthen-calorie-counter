@@ -28,7 +28,6 @@ const commonConfig = merge([
       }),
     ],
   },
-  parts.loadSCSS(),
   parts.loadSVGs({
     options: {
       classPrefix: true,
@@ -72,7 +71,7 @@ const productionConfig = merge([
     },
   }),
   parts.extractCSS({
-    use: ['css-loader', 'sass-loader'],
+    use: ['css-loader', 'postcss-loader'],
   }),
   parts.purifyCSS({
     paths: glob.sync(`${PATHS.app}/**/*.js`, { nodir: true }),
@@ -107,6 +106,7 @@ const developmentConfig = merge([
     host: process.env.HOST,
     port: process.env.PORT,
   }),
+  parts.loadCSS(),
   parts.loadImages(),
 ]);
 
