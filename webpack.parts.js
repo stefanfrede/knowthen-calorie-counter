@@ -4,7 +4,7 @@ const GitRevisionPlugin = require('git-revision-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const PurifyCSSPlugin = require('purifycss-webpack');
+const PurgecssPlugin = require('purgecss-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const webpack = require('webpack');
 
@@ -158,8 +158,8 @@ exports.page = ({
   ],
 });
 
-exports.purifyCSS = ({ paths }) => ({
-  plugins: [new PurifyCSSPlugin({ paths })],
+exports.purgeCSS = ({ paths }) => ({
+  plugins: [new PurgecssPlugin({ paths })],
 });
 
 exports.setFreeVariable = (key, value) => {
