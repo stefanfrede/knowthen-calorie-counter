@@ -24,11 +24,12 @@ const fieldSet = ({ labelText, inputValue = '', placeholder = '' }) => html`
   </div>
 `;
 
-const buttonSet = () => html`
+const buttonSet = (actions) => html`
   <div>
     <div class="flex justify-end">
       <span class="inline-flex rounded-md shadow-sm">
         <button
+          @click=${() => actions.showFormMsg(false)}
           type="button"
           class="py-2 px-4 border border-gray-300 rounded-md text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out"
         >
@@ -47,7 +48,7 @@ const buttonSet = () => html`
   </div>
 `;
 
-const formView = ({ description, calories, showForm }) => html`
+const formView = ({ actions, description, calories, showForm }) => html`
   <form action="#" method="POST">
     ${showForm
       ? html`
@@ -61,11 +62,12 @@ const formView = ({ description, calories, showForm }) => html`
             inputValue: calories || '',
             placeholder: 'Add Calories',
           })}
-          ${buttonSet()}
+          ${buttonSet(actions)}
         `
       : html`
           <span class="inline-flex rounded-md shadow-sm">
             <button
+              @click=${() => actions.showFormMsg(true)}
               type="button"
               class="inline-flex items-center px-4 py-2 border border-transparent text-base leading-5 font-medium rounded-md text-white bg-pink-600 hover:bg-pink-500 focus:outline-none focus:border-pink-700 focus:shadow-outline-pink active:bg-pink-700 transition ease-in-out duration-150"
             >
@@ -76,7 +78,6 @@ const formView = ({ description, calories, showForm }) => html`
   </form>
 `;
 
-// eslint-disable-next-line no-unused-vars
 const createView = (actions) => (model) => html`
   <section class="w-screen h-screen flex items-center justify-center">
     <div class="bg-white overflow-hidden shadow rounded-lg">
@@ -86,9 +87,9 @@ const createView = (actions) => (model) => html`
         </h3>
       </div>
       <div class="px-4 py-5 sm:p-6">
-        ${formView(model)}
+        ${formView({ actions, ...model })}
 
-        <pre>${JSON.stringify(model, null, 2)}</pre>
+        <pre class="mt-6">${JSON.stringify(model, null, 2)}</pre>
       </div>
     </div>
   </section>
