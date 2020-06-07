@@ -46,6 +46,9 @@
       "prettier --write"
     ]
   },
+  "sideEffects": [
+    "*.css"
+  ],
   "scripts": {
     "test": "if-ci npm run test:coverage && if-not-ci npm run test:watch",
     "test:coverage": "jest --coverage",
