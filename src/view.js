@@ -5,31 +5,41 @@ import icons from './assets/icons';
 
 const { utensils: iconUtensils } = icons;
 
-const fieldSet = ({ labelText, inputValue = '', placeholder = '' }) => html`
+const fieldSet = ({
+  labelText,
+  inputId,
+  inputType = 'text',
+  inputValue = '',
+  placeholder = '',
+  action,
+}) => html`
   <div class="mb-6">
     <label
-      for="email"
+      for="${inputId}"
       class="block text-sm font-medium leading-5 text-gray-700"
     >
       ${labelText}
     </label>
     <div class="mt-1 relative rounded-md shadow-sm">
       <input
-        id="email"
+        type="${inputType}"
+        name="${inputId}"
+        id="${inputId}"
         class="form-input block w-full sm:text-sm sm:leading-5"
         placeholder="${placeholder}"
         value="${inputValue}"
+        @input=${(e) => action(e.target.value)}
       />
     </div>
   </div>
 `;
 
-const buttonSet = (actions) => html`
+const buttonSet = (showFormMsg) => html`
   <div>
     <div class="flex justify-end">
       <span class="inline-flex rounded-md shadow-sm">
         <button
-          @click=${() => actions.showFormMsg(false)}
+          @click=${() => showFormMsg(false)}
           type="button"
           class="py-2 px-4 border border-gray-300 rounded-md text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out"
         >
@@ -54,15 +64,20 @@ const formView = ({ actions, description, calories, showForm }) => html`
       ? html`
           ${fieldSet({
             labelText: 'Meal',
+            inputId: 'description',
             inputValue: description,
             placeholder: 'Add Meal',
+            action: actions.mealInputMsg,
           })}
           ${fieldSet({
             labelText: 'Calories',
+            inputId: 'calories',
+            inputType: 'number',
             inputValue: calories || '',
             placeholder: 'Add Calories',
+            action: actions.caloriesInputMsg,
           })}
-          ${buttonSet(actions)}
+          ${buttonSet(actions.showFormMsg)}
         `
       : html`
           <span class="inline-flex rounded-md shadow-sm">
