@@ -11,6 +11,7 @@ const fieldSet = ({
   inputType = 'text',
   inputValue = '',
   placeholder = '',
+  required = false,
   action,
 }) => html`
   <div class="mb-6">
@@ -28,18 +29,19 @@ const fieldSet = ({
         class="form-input block w-full sm:text-sm sm:leading-5"
         placeholder="${placeholder}"
         value="${inputValue}"
+        ?required=${required}
         @input=${(e) => action(e.target.value)}
       />
     </div>
   </div>
 `;
 
-const buttonSet = (showFormMsg) => html`
+const buttonSet = (action) => html`
   <div>
     <div class="flex justify-end">
       <span class="inline-flex rounded-md shadow-sm">
         <button
-          @click=${() => showFormMsg(false)}
+          @click=${() => action(false)}
           type="button"
           class="py-2 px-4 border border-gray-300 rounded-md text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out"
         >
@@ -59,7 +61,13 @@ const buttonSet = (showFormMsg) => html`
 `;
 
 const formView = ({ actions, description, calories, showForm }) => html`
-  <form action="#" method="POST">
+  <form
+    @submit=${(e) => {
+      e.preventDefault();
+
+      actions.saveMeal();
+    }}
+  >
     ${showForm
       ? html`
           ${fieldSet({
@@ -67,6 +75,7 @@ const formView = ({ actions, description, calories, showForm }) => html`
             inputId: 'description',
             inputValue: description,
             placeholder: 'Add Meal',
+            required: true,
             action: actions.mealInputMsg,
           })}
           ${fieldSet({
@@ -75,6 +84,7 @@ const formView = ({ actions, description, calories, showForm }) => html`
             inputType: 'number',
             inputValue: calories || '',
             placeholder: 'Add Calories',
+            required: true,
             action: actions.caloriesInputMsg,
           })}
           ${buttonSet(actions.showFormMsg)}
