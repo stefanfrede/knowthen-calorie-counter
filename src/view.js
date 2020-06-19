@@ -1,9 +1,8 @@
 import { html } from 'lit-html';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 
 import './assets/styles/index.css';
-import icons from './assets/icons';
-
-const { utensils: iconUtensils } = icons;
+import fa from './assets/icons';
 
 const fieldSet = ({
   labelText,
@@ -108,11 +107,100 @@ const createView = (actions) => (model) => html`
     <div class="bg-white overflow-hidden shadow rounded-lg">
       <div class="border-b border-gray-200 px-4 py-5 sm:px-6">
         <h3 class="text-xl leading-7 font-semibold text-gray-900">
-          Calorie Counter ${iconUtensils}
+          Calorie Counter ${unsafeHTML(fa.utensils)}
         </h3>
       </div>
       <div class="px-4 py-5 sm:p-6">
         ${formView({ actions, ...model })}
+        ${model.meals.length
+          ? html` <div class="flex flex-col mt-6">
+              <div
+                class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8"
+              >
+                <div
+                  class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200"
+                >
+                  <table class="min-w-full">
+                    <thead>
+                      <tr>
+                        <th
+                          class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                        >
+                          Meal
+                        </th>
+                        <th
+                          class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                        >
+                          Calories
+                        </th>
+                        <th
+                          class="px-6 py-3 border-b border-gray-200 bg-gray-50"
+                        ></th>
+                      </tr>
+                    </thead>
+                    <tbody class="bg-white">
+                      ${model.meals.map(
+                        (meal) => html`
+                          <tr>
+                            <td
+                              class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 font-medium text-gray-900"
+                            >
+                              ${meal.description}
+                            </td>
+                            <td
+                              class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500"
+                            >
+                              ${meal.calories}
+                            </td>
+                            <td
+                              class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium"
+                            >
+                              <a
+                                href="#"
+                                class="text-pink-600 hover:text-pink-900"
+                              >
+                                ${unsafeHTML(fa.trash)}
+                              </a>
+                              <a
+                                href="#"
+                                class="text-pink-600 hover:text-pink-900"
+                              >
+                                ${unsafeHTML(fa.pencil)}
+                              </a>
+                            </td>
+                          </tr>
+                        `,
+                      )}
+                    </tbody>
+                    <tfoot class="bg-white">
+                      <tr>
+                        <td
+                          class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 font-medium text-gray-900"
+                        >
+                          Total
+                        </td>
+                        <td
+                          class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500"
+                        >
+                          ${model.meals.reduce(
+                            (acc, cur) => acc + cur.calories,
+                            0,
+                          )}
+                        </td>
+                        <td
+                          class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium"
+                        ></td>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div>
+              </div>
+            </div>`
+          : html`
+              <div class="mt-6 text-gray-400 italic">
+                No meals to display...
+              </div>
+            `}
 
         <pre class="mt-6">${JSON.stringify(model, null, 2)}</pre>
       </div>
