@@ -13,6 +13,9 @@ const { modify } = State;
 // add :: Number -> Number -> Number
 const add = (x) => (y) => x + y;
 
+// omitID :: Array -> Number -> Array
+const omitID = (x) => (y) => y.filter((z) => z.id !== x);
+
 // safeNumber :: a -> Number
 const safeNumber = compose(option(0), safe(isNumber), parseInt);
 
@@ -42,15 +45,18 @@ const closeForm = () => modify(setProp('showForm', false));
 const increaseId = () => modify(mapProps({ nextId: add(1) }));
 
 // saveMeal :: Object -> State Object ()
-const saveMeal = (model) => {
+const saveMeal = ({ calories, description, meals, nextId }) => {
   const meal = {
-    id: model.nextId,
-    description: model.description,
-    calories: model.calories,
+    id: nextId,
+    description,
+    calories,
   };
 
-  return modify(setProp('meals', [...model.meals, meal]));
+  return modify(setProp('meals', [...meals, meal]));
 };
+
+// deleateMeal :: Number -> State Object ()
+const deleteMeal = (id) => modify(mapProps({ meals: omitID(id) }));
 
 const createActions = (update) => ({
   showFormMsg: (show) =>
@@ -72,6 +78,7 @@ const createActions = (update) => ({
         .chain(closeForm)
         .execWith(model),
     ),
+  deleteMeal: (id) => update((model) => deleteMeal(id).execWith(model)),
 });
 
 export default createActions;
