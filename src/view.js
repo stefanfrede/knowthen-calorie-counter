@@ -155,19 +155,17 @@ const createView = (actions) => (model) => html`
                             <td
                               class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium"
                             >
-                              <a
+                              <button
                                 @click=${() => actions.deleteMeal(meal.id)}
-                                href="#"
                                 class="px-1 text-pink-600 hover:text-pink-900"
                               >
                                 ${unsafeHTML(fa.trash)}
-                              </a>
-                              <a
-                                href="#"
+                              </button>
+                              <button
                                 class="px-1 text-pink-600 hover:text-pink-900"
                               >
                                 ${unsafeHTML(fa.pencil)}
-                              </a>
+                              </button>
                             </td>
                           </tr>
                         `,

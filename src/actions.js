@@ -45,14 +45,17 @@ const closeForm = () => modify(setProp('showForm', false));
 const increaseId = () => modify(mapProps({ nextId: add(1) }));
 
 // saveMeal :: Object -> State Object ()
-const saveMeal = ({ calories, description, meals, nextId }) => {
-  const meal = {
-    id: nextId,
-    description,
-    calories,
-  };
-
-  return modify(setProp('meals', [...meals, meal]));
+const saveMeal = ({ calories, description, meals, nextId: id }) => {
+  return modify(
+    setProp('meals', [
+      ...meals,
+      {
+        id,
+        description,
+        calories,
+      },
+    ]),
+  );
 };
 
 // deleateMeal :: Number -> State Object ()
