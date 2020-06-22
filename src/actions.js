@@ -1,83 +1,63 @@
-import State from 'crocks/State';
-
-import compose from 'crocks/helpers/compose';
-import isNumber from 'crocks/predicates/isNumber';
-import isString from 'crocks/predicates/isString';
-import mapProps from 'crocks/helpers/mapProps';
-import option from 'crocks/pointfree/option';
-import safe from 'crocks/Maybe/safe';
+import constant from 'crocks/combinators/constant';
 import setProp from 'crocks/helpers/setProp';
 
-const { modify } = State;
+import { inc, omitId, over, safeNumber, safeString } from './helpers';
 
-// add :: Number -> Number -> Number
-const add = (x) => (y) => x + y;
+// incMoves :: () -> State AppState ()
+const incNextId = () => over('nextId', inc);
 
-// omitID :: Array -> Number -> Array
-const omitID = (x) => (y) => y.filter((z) => z.id !== x);
+// setShowForm :: Boolean -> State AppState ()
+const setShowForm = (showForm) => over('showForm', constant(showForm));
 
-// safeNumber :: a -> Number
-const safeNumber = compose(option(0), safe(isNumber), parseInt);
+// setDescription :: String -> State AppState ()
+const setDescription = (description) =>
+  over('description', constant(safeString(description)));
 
-// safeString :: a -> String
-const safeString = compose(option(''), safe(isString));
+// setCalories :: String -> State AppState ()
+const setCalories = (calories) =>
+  over('calories', constant(safeNumber(calories)));
 
-// showForm :: Boolean -> a -> State Object ()
-const showForm = (show) => modify(setProp('showForm', show));
+// resetDescription :: () -> State AppState ()
+const resetDescription = () => over('description', constant(''));
 
-// insertMeal :: String -> a -> State Object  ()
-const insertMeal = (meal) => modify(setProp('description', safeString(meal)));
+// resetCalories :: () -> State AppState ()
+const resetCalories = () => over('calories', constant(0));
 
-// insertCalories :: Number -> a -> State Object  ()
-const insertCalories = (calories) =>
-  modify(setProp('calories', safeNumber(calories)));
+// closeForm :: () -> State AppState ()
+const closeForm = () => over('showForm', constant(false));
 
-// resetDescription :: () -> a -> State Object  ()
-const resetDescription = () => modify(setProp('description', ''));
-
-// resetCalories :: () -> a -> State Object  ()
-const resetCalories = () => modify(setProp('calories', 0));
-
-// closeForm :: () -> a -> State Object  ()
-const closeForm = () => modify(setProp('showForm', false));
-
-// increaseId :: () -> State Object ()
-const increaseId = () => modify(mapProps({ nextId: add(1) }));
-
-// saveMeal :: Object -> State Object ()
-const saveMeal = ({ calories, description, meals, nextId: id }) => {
-  return modify(
-    setProp('meals', [
-      ...meals,
-      {
-        id,
-        description,
-        calories,
-      },
-    ]),
+// saveMeal :: Object -> State App State ()
+const saveMeal = ({ calories, description, meals, nextId: id }) =>
+  over(
+    'meals',
+    setProp(meals.length, {
+      id,
+      description,
+      calories,
+    }),
   );
-};
 
-// deleateMeal :: Number -> State Object ()
-const deleteMeal = (id) => modify(mapProps({ meals: omitID(id) }));
+// deleateMeal :: Number -> State App State ()
+const deleteMeal = (id) => over('meals', omitId(id));
 
 const createActions = (update) => ({
-  showFormMsg: (show) =>
+  showFormMsg: (showForm) =>
     update((model) =>
-      showForm(show)
+      setShowForm(showForm)
         .chain(resetDescription)
         .chain(resetCalories)
         .execWith(model),
     ),
-  mealInputMsg: (meal) => update((model) => insertMeal(meal).execWith(model)),
-  caloriesInputMsg: (calories) =>
-    update((model) => insertCalories(calories).execWith(model)),
+  descriptionMsg: (description) =>
+    update((model) => setDescription(description).execWith(model)),
+  caloriesMsg: (calories) =>
+    update((model) => setCalories(calories).execWith(model)),
   saveMeal: () =>
     update((model) =>
       saveMeal(model)
         .chain(resetDescription)
         .chain(resetCalories)
-        .chain(increaseId)
+        .chain(incNextId)
         .chain(closeForm)
         .execWith(model),
     ),

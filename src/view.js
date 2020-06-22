@@ -75,7 +75,7 @@ const formView = ({ actions, description, calories, showForm }) => html`
             inputValue: description,
             placeholder: 'Add Meal',
             required: true,
-            action: actions.mealInputMsg,
+            action: actions.descriptionMsg,
           })}
           ${fieldSet({
             labelText: 'Calories',
@@ -84,7 +84,7 @@ const formView = ({ actions, description, calories, showForm }) => html`
             inputValue: calories || '',
             placeholder: 'Add Calories',
             required: true,
-            action: actions.caloriesInputMsg,
+            action: actions.caloriesMsg,
           })}
           ${buttonSet(actions.showFormMsg)}
         `
