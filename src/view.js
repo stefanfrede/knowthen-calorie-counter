@@ -162,6 +162,7 @@ const createView = (actions) => (model) => html`
                                 ${unsafeHTML(fa.trash)}
                               </button>
                               <button
+                                @click=${() => actions.editMeal(meal.id)}
                                 class="px-1 text-pink-600 hover:text-pink-900"
                               >
                                 ${unsafeHTML(fa.pencil)}
